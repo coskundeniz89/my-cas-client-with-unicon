@@ -34,7 +34,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-security')
 
     compile "org.webjars:bootstrap:3.3.4"
-    compile('com.kakawait:cas-security-spring-boot-starter:0.4.4')
+    compile('net.unicon.cas:cas-client-autoconfig-support:1.4.0-GA')
 }
 
 task wrapper(type: Wrapper) {

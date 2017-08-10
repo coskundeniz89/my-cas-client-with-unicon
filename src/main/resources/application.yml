@@ -4,16 +4,11 @@ security:
   basic:
     enabled: false
   ignored: /, /**/favicon.ico
-  cas:
-    proxy-validation:
-      chains:
-        - https://localhost:8443
-    paths: /protected
-    server:
-      base-url: https://cas:10100/cas
-      protocol-version: 3
-    service:
-      resolution-mode: dynamic
+
+cas:
+  server-url-prefix: https://${cas_server:localhost}:10100/cas
+  server-login-url: https://localhost:10100/cas/login
+  client-host-url: https://localhost:12000
 
 spring:
   thymeleaf:
@@ -21,10 +16,10 @@ spring:
     cache: false
 
 server:
-  port: 8443
+  port: 12000
   ssl:
     enabled: true
-    key-store: file:/etc/keystore/cas.jks
+    key-store: classpath:keystore/localhost.jks
     key-store-password: changeit
 
 logging.level:
