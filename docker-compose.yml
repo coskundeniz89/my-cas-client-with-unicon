@@ -1,0 +1,19 @@
+version: '2.1'
+services:
+  cas-client:
+    image: tpedocker/cas-client
+    container_name: cas-client
+    build: .
+    ports:
+      - "8443:8443"
+    links:
+      - cas
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+  cas:
+    image: tpedocker/cas
+    ports:
+      - "10100:10100"
+    environment:
+      SPRING_PROFILES_ACTIVE: native
+      LDAP_HOST: 10.10.0.10

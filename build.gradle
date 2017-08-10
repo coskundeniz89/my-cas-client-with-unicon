@@ -1,0 +1,42 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.4.RELEASE'
+    }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+
+jar {
+    baseName = 'cas-client'
+    if (System.getProperty('bambooBuildNumber')) {
+        version = System.getProperty('bambooBuildNumber')
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+    mavenLocal()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-security')
+
+    compile "org.webjars:bootstrap:3.3.4"
+    compile('com.kakawait:cas-security-spring-boot-starter:0.4.4')
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.0.1'
+}

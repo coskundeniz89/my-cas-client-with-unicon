@@ -1,0 +1,31 @@
+casLogoutUrl: https://localhost:10100/cas/logout
+
+security:
+  basic:
+    enabled: false
+  ignored: /, /**/favicon.ico
+  cas:
+    proxy-validation:
+      chains:
+        - https://localhost:8443
+    paths: /protected
+    server:
+      base-url: https://cas:10100/cas
+      protocol-version: 3
+    service:
+      resolution-mode: dynamic
+
+spring:
+  thymeleaf:
+    # For dev
+    cache: false
+
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: file:/etc/keystore/cas.jks
+    key-store-password: changeit
+
+logging.level:
+    org.jasig.cas: INFO

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head data-th-include="fragments/layout::htmlhead" data-th-with="title='Protected area'"></head>
+
+<body>
+
+<div data-th-replace="fragments/layout::navbar">(navbar)</div>
+
+<div class="container">
+    <div>
+        <h2>You are in protected area. You are logged in as (<span data-th-text="${principal}">(principal)</span>)</h2>
+        <h3><a data-th-href="${@mainController.casLogoutUrl}">Log out</a></h3>
+    </div>
+</div>
+
+</body>
+
+</html>

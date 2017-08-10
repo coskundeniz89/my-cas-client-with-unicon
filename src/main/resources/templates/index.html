@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head data-th-include="fragments/layout::htmlhead" data-th-with="title='My CAS client sample app'"></head>
+
+<body>
+
+<div data-th-replace="fragments/layout::navbar">(navbar)</div>
+
+<div class="container">
+    <div>
+        Anonymous Area
+    </div>
+
+    <a data-th-href="@{/protected}">Protected Area</a>
+    <div data-th-text="${@environment.getProperty('VERSION_NUMBER')}">00</div>
+</div>
+
+</body>
+
+</html>
